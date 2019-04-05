@@ -19,54 +19,25 @@
           <h1>Azure App Service - Sample Static HTML Site</h1>
           <hr/>
           <h4>
-            <?php
-            /* Specify the server and connection string attributes. */
-            $serverName = 'bagasap90.database.windows.net';
-            /* Get UID and PWD from application-specific files.  */
-            $uid = 'bagaswtf';
-            $pwd = 'Bagasadi90--';
-            $connectionInfo = array( "UID"=>$uid,
-                                     "PWD"=>$pwd,
-                                     "Database"=>"belajarphp");
-             
-            /* Connect using SQL Server Authentication. */
-            $conn = sqlsrv_connect( $serverName, $connectionInfo);
-               if( $conn === false )
-                {
-                    echo "Could not connect.\n";
-                    die( print_r( sqlsrv_errors(), true));
-                }
-                else {
-                    echo "koneksi berhasil..!";
-                    echo "Data Tabel Pemakai :";
-                
-                   
-                    $tsql = "select * from [pemakai]";
-                    $result = sqlsrv_query($conn, $tsql);
-                   
-                    while($row = sqlsrv_fetch_array($result))
-                    {
-                    echo"<hr><p></p><table border=1 cellpadding=4 cellspacing=0>
-                  <tr bgcolor='#ccc'><td>Id</td><td>Nama</td><td>Email</td></tr>";
-                  echo"<tr><td>$row[id]</td><td>$row[nama]</td><td>$row[email]</td></tr>";
-                
-                    }
-              
-                sqlsrv_close( $conn);       
-                }
-             
+            <?php 
+            // PHP Data Objects(PDO) Sample Code:
+            // try {
+            //     $conn = new PDO("sqlsrv:server = tcp:bagasap90.database.windows.net,1433; Database = bagasap90-db", "bagaswtf", "Bagasadi90--");
+            //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // }
+            // catch (PDOException $e) {
+            //     print("Error connecting to SQL Server.");
+            //     die(print_r($e));
+            // }
 
-            ?>
-            <?php
-            
-            $con = mssql_connect($server, $username, $password);
-            if ($con) 
-            {
-                echo 'Berhasil konek!';
-            }
-            else
-            {
-                echo 'Koneksi GAGAL!';
+            // SQL Server Extension Sample Code:
+            $connectionInfo = array("UID" => "bagaswtf@bagasap90", "pwd" => "Bagasadi90--", "Database" => "bagasap90-db", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+            $serverName = "tcp:bagasap90.database.windows.net,1433";
+            $conn = sqlsrv_connect($serverName, $connectionInfo);
+            if ($conn) {
+              echo "Berhasil konek";
+            } else {
+              echo "Gagal konek";
             }
             ?>
           </h4>
