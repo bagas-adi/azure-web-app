@@ -46,16 +46,17 @@
             try{
               $conn = sqlsrv_connect($serverName, $connectionInfo);
               $tsql= "SELECT * FROM [dbo].[User]";
-              $getResults= sqlsrv_query($conn, $tsql);
+              $getResults= sqlsrv_query($conn, $tsql) or die(FormatErrors(sqlsrv_errors()));
               echo ("Reading data from table" . PHP_EOL);
-              if ($getResults == FALSE){
-                  die(FormatErrors(sqlsrv_errors()));
-              } else {
-                while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+              while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
                  echo ($row['ID'] . " " . $row['Name'] . PHP_EOL);
                 };
                 sqlsrv_free_stmt($getResults);
-              }
+              // if ($getResults == FALSE){
+                  
+              // } else {
+                
+              // }
             } catch (Exception $e){
               echo "Failed: " . $e;
             };
