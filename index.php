@@ -45,7 +45,7 @@
             $serverName = "tcp:bagasap90.database.windows.net,1433";
             try{
               $conn = sqlsrv_connect($serverName, $connectionInfo);
-              $tsql= "SELECT * FROM [db0].[User]";
+              $tsql= "SELECT * FROM [dbo].[User]";
               $getResults= sqlsrv_query($conn, $tsql);
               echo ("Reading data from table" . PHP_EOL);
               if ($getResults == FALSE){
