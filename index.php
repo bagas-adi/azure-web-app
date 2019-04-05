@@ -45,13 +45,22 @@
             $serverName = "tcp:bagasap90.database.windows.net,1433";
             try{
               $conn = sqlsrv_connect($serverName, $connectionInfo);
-              $tsql= "SELECT * FROM [dbo].[User]";
-              $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
-              // echo ("Reading data from table" . PHP_EOL);
-              while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-                 echo ($row['ID'] . " " . $row['Name'] . PHP_EOL);
-                };
-                sqlsrv_free_stmt($getResults);
+              if( $conn === false ) {
+                   die( print_r( sqlsrv_errors(), true));
+              } else {
+                $tsql= "SELECT * FROM [dbo].[User]";
+                $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
+                if( $getResults === false ) {
+                   die( print_r( sqlsrv_errors(), true));
+                } else {
+                  // echo ("Reading data from table" . PHP_EOL);
+                  while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+                     echo ($row['ID'] . " " . $row['Name'] . PHP_EOL);
+                  };
+                  sqlsrv_free_stmt($getResults);
+                }
+              }
+              
               // if ($getResults == FALSE){
                   
               // } else {
