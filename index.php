@@ -39,20 +39,21 @@
             // } catch(Exception $e) {
             //     echo "Failed: " . $e;
             // };
-            // SQL Server Extension Sample Code:
-            $connectionInfo = array("Uid" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
+            // SQL Server Extension Sample Code: Uid -> bagaswtf@bagasap90
+            $connectionInfo = array("Uid" => "bagaswtf", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
             //, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0
             $serverName = "bagasap90.database.windows.net";
             try{
               $conn = sqlsrv_connect($serverName, $connectionInfo);
+              if ($conn) {
+              echo "Berhasil konek";
+            } else {
+              echo "Gagal konek";
+            };
             } catch (Exception $e){
               echo "Failed: " . $e;
             };
-            // if ($conn) {
-            //   echo "Berhasil konek";
-            // } else {
-            //   echo "Gagal konek";
-            // };
+            
             ?>
           </h4>
       </div>
