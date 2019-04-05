@@ -46,7 +46,7 @@
             try{
               $conn = sqlsrv_connect($serverName, $connectionInfo);
               $tsql= "SELECT * FROM [dbo].[User]";
-              $getResults= sqlsrv_query($conn, $tsql) or die(FormatErrors(sqlsrv_errors()));
+              $getResults= sqlsrv_query($conn, $tsql) or die(sqlsrv_errors());
               echo ("Reading data from table" . PHP_EOL);
               while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
                  echo ($row['ID'] . " " . $row['Name'] . PHP_EOL);
