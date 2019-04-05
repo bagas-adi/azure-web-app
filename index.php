@@ -40,7 +40,7 @@
             //     echo "Failed: " . $e;
             // };
             // SQL Server Extension Sample Code: Uid -> bagaswtf@bagasap90
-            $connectionInfo = array("Uid" => "bagaswtf", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
+            $connectionInfo = array("Uid" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
             //, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0
             $serverName = "tcp:bagasap90.database.windows.net,1433";
             try{
