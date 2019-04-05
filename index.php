@@ -29,26 +29,26 @@
             //     print("Error connecting to SQL Server.");
             //     die(print_r($e));
             // };
-            // $host = "bagasap90.database.windows.net";
-            // $user = "bagaswtf";
-            // $pass = "Bagasadi90--";
-            // $db = "bagasap90-db";
-            // try {
-            //     $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
-            //     $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            // } catch(Exception $e) {
-            //     echo "Failed: " . $e;
-            // }
-            // // SQL Server Extension Sample Code:
-            $connectionInfo = array("Uid" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
-            //, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0
-            $serverName = "bagasap90.database.windows.net";
-            $conn = sqlsrv_connect($serverName, $connectionInfo);
-            if ($conn) {
-              echo "Berhasil konek";
-            } else {
-              echo "Gagal konek";
+            $host = "bagasap90.database.windows.net";
+            $user = "bagaswtf";
+            $pass = "Bagasadi90--";
+            $db = "bagasap90-db";
+            try {
+                $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            } catch(Exception $e) {
+                echo "Failed: " . $e;
             };
+            // // SQL Server Extension Sample Code:
+            // $connectionInfo = array("Uid" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
+            // //, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0
+            // $serverName = "bagasap90.database.windows.net";
+            // $conn = sqlsrv_connect($serverName, $connectionInfo);
+            // if ($conn) {
+            //   echo "Berhasil konek";
+            // } else {
+            //   echo "Gagal konek";
+            // };
             ?>
           </h4>
       </div>
