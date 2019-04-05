@@ -1,3 +1,18 @@
+<?php
+$server = 'bagasap90.database.windows.net';
+$username = 'bagaswtf';
+$password = 'Bagasadi90--';
+$con = mssql_connect($server, $username, $password);
+if ($con) 
+{
+    echo 'Berhasil konek!';
+}
+else
+{
+    echo 'Koneksi GAGAL!';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
