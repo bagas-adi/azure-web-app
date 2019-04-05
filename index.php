@@ -20,9 +20,45 @@
           <hr/>
           <h4>
             <?php
-            $server = 'bagasap90.database.windows.net';
-            $username = 'bagaswtf';
-            $password = 'Bagasadi90--';
+            /* Specify the server and connection string attributes. */
+            $serverName = 'bagasap90.database.windows.net';
+            /* Get UID and PWD from application-specific files.  */
+            $uid = 'bagaswtf';
+            $pwd = 'Bagasadi90--';
+            $connectionInfo = array( "UID"=>$uid,
+                                     "PWD"=>$pwd,
+                                     "Database"=>"belajarphp");
+             
+            /* Connect using SQL Server Authentication. */
+            $conn = sqlsrv_connect( $serverName, $connectionInfo);
+               if( $conn === false )
+                {
+                    echo "Could not connect.\n";
+                    die( print_r( sqlsrv_errors(), true));
+                }
+                else {
+                    echo "koneksi berhasil..!";
+                    echo "Data Tabel Pemakai :";
+                
+                   
+                    $tsql = "select * from [pemakai]";
+                    $result = sqlsrv_query($conn, $tsql);
+                   
+                    while($row = sqlsrv_fetch_array($result))
+                    {
+                    echo"<hr><p></p><table border=1 cellpadding=4 cellspacing=0>
+                  <tr bgcolor='#ccc'><td>Id</td><td>Nama</td><td>Email</td></tr>";
+                  echo"<tr><td>$row[id]</td><td>$row[nama]</td><td>$row[email]</td></tr>";
+                
+                    }
+              
+                sqlsrv_close( $conn);       
+                }
+             
+
+            ?>
+            <?php
+            
             $con = mssql_connect($server, $username, $password);
             if ($con) 
             {
