@@ -45,11 +45,11 @@
             $serverName = "tcp:bagasap90.database.windows.net,1433";
             try{
               $conn = sqlsrv_connect($serverName, $connectionInfo);
-              if ($conn) {
-              echo "Berhasil konek";
-            } else {
-              echo "Gagal konek";
-            };
+              $tsql= "SELECT * FROM [db0].[User]";
+              $getResults= sqlsrv_query($conn, $tsql);
+              echo ("Reading data from table" . PHP_EOL);
+              if ($getResults == FALSE)
+                  echo (sqlsrv_errors());
             } catch (Exception $e){
               echo "Failed: " . $e;
             };
