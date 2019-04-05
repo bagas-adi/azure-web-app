@@ -40,7 +40,7 @@
             //     echo "Failed: " . $e;
             // };
             // SQL Server Extension Sample Code: Uid -> bagaswtf@bagasap90
-            $connectionInfo = array("Uid" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
+            $connectionInfo = array("Uid" => "bagaswtf", "PWD" => "Bagasadi90--", "Database" => "bagasap90-db");
             //, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0
             $serverName = "tcp:bagasap90.database.windows.net,1433";
             try{
@@ -48,12 +48,14 @@
               $tsql= "SELECT * FROM [db0].[User]";
               $getResults= sqlsrv_query($conn, $tsql);
               echo ("Reading data from table" . PHP_EOL);
-              if ($getResults == FALSE)
-                  echo (sqlsrv_errors());
-              while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-               echo ($row['ID'] . " " . $row['Name'] . PHP_EOL);
-              };
-              sqlsrv_free_stmt($getResults);
+              if ($getResults == FALSE){
+                  die(FormatErrors(sqlsrv_errors()));
+              } else {
+                while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+                 echo ($row['ID'] . " " . $row['Name'] . PHP_EOL);
+                };
+                sqlsrv_free_stmt($getResults);
+              }
             } catch (Exception $e){
               echo "Failed: " . $e;
             };
