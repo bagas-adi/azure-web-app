@@ -1,3 +1,7 @@
+
+<?php  
+  include("koneksi.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Azure App Service - Sample Static HTML Site</title>
+    <title>Azure Web App - Bagasap90</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -16,95 +20,10 @@
   <body>
     <div class="navbar-wrapper">
       <div class="container">
-          <h1>Azure App Service - Sample Static HTML Site</h1>
+          <h1>Selamat Datang!</h1>
+          <h4>Silahkan isi data diri Anda</h4>
           <hr/>
           <h4>
-
-
-<?php
-  // $host = "tcp:bagasap90.database.windows.net,1433";
-  // $dbname = "bagasap90-db";
-  // $dbuser = "bagaswtf@bagasap90";
-  // $dbpwd = "Bagasadi90--";
-  // // $driver = "{SQL Server Native Client 10.0}";
-  // $driver = "{ODBC Driver 13 for SQL Server}";
-
-  // // Build connection string
-  // $dsn= "Driver={ODBC Driver 13 for SQL Server};Server=$host;Database=$dbname;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;";
-  // // $dsn="Driver=$driver;Server=$host;Database=$dbname;Encrypt=true;TrustServerCertificate=true";
-  // if (!($conn = @odbc_connect($dsn, $dbuser, $dbpwd))) {
-  //     die("Connection error: " . odbc_errormsg());
-  // }
-  // // Got a connection, run simple query
-  // if ($qh = @odbc_exec($conn, "SELECT A, B FROM myTable")) {
-  //     // Dump query result
-  //     $rows = 0;
-  //     while ( $row = @odbc_fetch_object($qh) ) {
-  //           echo("$rows: $row->A $row->B\r\n");
-  //           $rows++;
-  //     }
-  //     @odbc_free_result($qh);
-  // }
-  // else {
-  //     // Error running query
-  //     echo("Query error: " . odbc_errormsg($conn));
-  // }
-  // // Free the connection
-  // @odbc_close($conn);
-?>
-
-            <?php 
-            // PHP Data Objects(PDO) Sample Code:
-            // try {
-            //     $conn = new PDO("sqlsrv:server = tcp:bagasap90.database.windows.net,1433; Database = bagasap90-db", "bagaswtf", "Bagasadi90--");
-            //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // }
-            // catch (PDOException $e) {
-            //     print("Error connecting to SQL Server.");
-            //     die(print_r($e));
-            // };
-            // $host = "bagasap90.database.windows.net";
-            // $user = "bagaswtf";
-            // $pass = "Bagasadi90--";
-            // $db = "bagasap90-db";
-            // try {
-            //     $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
-            //     $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            // } catch(Exception $e) {
-            //     echo "Failed: " . $e;
-            // };
-            // SQL Server Extension Sample Code: Uid -> bagaswtf@bagasap90
-                
-            $connectionInfo = array("Database" => "bagasap90-db","UID" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-            $serverName = "tcp:bagasap90.database.windows.net,1433";
-            try{
-              $conn = sqlsrv_connect($serverName, $connectionInfo);
-              if( $conn === false ) {
-                   die( print_r( sqlsrv_errors(), true));
-              } else {
-                $tsql= "SELECT * FROM [dbo].[User]";
-                $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
-                if( $getResults === false ) {
-                   die( print_r( sqlsrv_errors(), true));
-                } else {
-                  // echo ("Reading data from table" . PHP_EOL);
-                  while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-                     echo ($row['ID'] . " " . $row['Nama'] . PHP_EOL);
-                  };
-                  sqlsrv_free_stmt($getResults);
-                }
-              }
-              
-              // if ($getResults == FALSE){
-                  
-              // } else {
-                
-              // }
-            } catch (Exception $e){
-              echo "Failed: " . $e;
-            };
-            
-            ?>
           </h4>
       </div>
     </div>
