@@ -17,7 +17,7 @@ function connectDB(){
   // };
 };
 function insertDB($conn,$nama,$email,$job){
-  $tsql= "INSERT INTO [dbo].[Register] (Nama,Email,Job) VALUES ($nama,$email, $job)";
+  $tsql= "INSERT INTO [dbo].[Register] (Nama,Email,Job) VALUES ('".$nama."','".$email."', '".$job."')";
     $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
     if( $getResults === false ) {
        die( print_r( sqlsrv_errors(), true));
