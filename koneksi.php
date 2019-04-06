@@ -1,28 +1,28 @@
 <?php 
 function connectDB(){
-	$connectionInfo = array("Database" => "bagasap90-db","UID" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-	$serverName = "tcp:bagasap90.database.windows.net,1433";
-	try{
-	  $conn = sqlsrv_connect($serverName, $connectionInfo);
-	  if( $conn === false ) {
-	       // die( print_r( sqlsrv_errors(), true));
-	       return false;
-	  } else {
-	  	return true;
-	  };
-	} catch (Exception $e){
-	  // echo "Failed: " . $e;
-	  return true;
-	};
+  $connectionInfo = array("Database" => "bagasap90-db","UID" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+  $serverName = "tcp:bagasap90.database.windows.net,1433";
+  try{
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+    if( $conn === false ) {
+         // die( print_r( sqlsrv_errors(), true));
+         return false;
+    } else {
+      return true;
+    };
+  } catch (Exception $e){
+    // echo "Failed: " . $e;
+    return true;
+  };
 };
-// function insertDB($nama,$email,$job){
-// 	$tsql= "INSERT INTO [dbo].[Register] (Nama,Email,Job) VALUES ($nama,$email, $job)";
-//     $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
-//     if( $getResults === false ) {
-//        die( print_r( sqlsrv_errors(), true));
-//     };
-//     sqlsrv_free_stmt($getResults);
-// };
+function insertDB($nama,$email,$job){
+	$tsql= "INSERT INTO [dbo].[Register] (Nama,Email,Job) VALUES ($nama,$email, $job)";
+    $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
+    if( $getResults === false ) {
+       die( print_r( sqlsrv_errors(), true));
+    };
+    sqlsrv_free_stmt($getResults);
+};
 function showData(){
 	$tsql= "SELECT * FROM [dbo].[Register]";
     $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
