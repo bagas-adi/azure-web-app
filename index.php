@@ -1,7 +1,7 @@
 
 <?php   
   include 'koneksi.php';
-  $conn = connectDB()
+  $conn = connectDB();
   if($conn === false){
     echo "false";
   } else {
