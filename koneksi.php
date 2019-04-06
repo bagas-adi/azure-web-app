@@ -8,14 +8,14 @@ function connectDB(){
          // die( print_r( sqlsrv_errors(), true));
          return false;
     } else {
-      return true;
+      return $conn;
     };
   } catch (Exception $e){
     // echo "Failed: " . $e;
-    return true;
+    return $conn;
   };
 };
-function insertDB($nama,$email,$job){
+function insertDB($conn,$nama,$email,$job){
   $tsql= "INSERT INTO [dbo].[Register] (Nama,Email,Job) VALUES ($nama,$email, $job)";
     $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
     if( $getResults === false ) {
@@ -23,7 +23,7 @@ function insertDB($nama,$email,$job){
     };
     sqlsrv_free_stmt($getResults);
 };
-function showData(){
+function showData($conn){
   $tsql= "SELECT * FROM [dbo].[Register]";
     $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
     if( $getResults === false ) {

@@ -1,10 +1,10 @@
 
 <?php   
   include 'koneksi.php';
- 
-  if(connectDB()){
+  $conn = connectDB()
+  if($conn){
     echo "true";
-    showData();
+    showData($conn);
   } else {
     echo "false";
   }
