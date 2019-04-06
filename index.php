@@ -7,6 +7,7 @@
   } else {
     echo "true";
     showData($conn);
+    insertDB($conn,"Bagas Adi","bagasap90@mail.com.id","Software developers");
   }
 ?>
 <!DOCTYPE html>
