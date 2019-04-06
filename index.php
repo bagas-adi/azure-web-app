@@ -65,12 +65,11 @@
                 <input type="text" name="job" placeholder="Pekerjaan"> -->
 
               <div class="form-group">
-                  <input class="btn btn-default" type="submit" name="submit">
+                  <input class="btn btn-default" type="submit" name="submit" value="Daftar">
               </div>
               </form>
             </div>
-              <div class="col-xs-12 col-sm-6">
-                  <img class="img-rectangle" src="img/cdn.png" alt="CDN" height="140">
+              <div class="col-xs-12 col-sm-6"> 
                   <h2>Peserta yang telah mendaftar</h2>
                   <?php 
                   showData($conn);

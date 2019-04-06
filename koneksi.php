@@ -18,7 +18,7 @@ function showData($conn){
     if( $getResults === false ) {
        die( print_r( sqlsrv_errors(), true));
     } else {
-      echo ("<table>");
+      echo ("<table class='table table-striped table-bordered'>");
       echo ("<tr><th>ID</th><th>Nama</th><th>Email</th><th>Job</th></tr>");
       while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
          echo ("<tr><td>".$row['ID'] . "</td><td>" . $row['Nama'] . "</td><td>" .$row['Email']. "</td><td>".$row['Job']."</td></tr>");
