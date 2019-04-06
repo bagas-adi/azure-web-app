@@ -5,13 +5,14 @@ function connectDB(){
 	try{
 	  $conn = sqlsrv_connect($serverName, $connectionInfo);
 	  if( $conn === false ) {
-	       die( print_r( sqlsrv_errors(), true));
+	       // die( print_r( sqlsrv_errors(), true));
 	       return false;
 	  } else {
 	  	return true;
 	  }
 	} catch (Exception $e){
-	  echo "Failed: " . $e;
+	  // echo "Failed: " . $e;
+	  return true;
 	};
 }
 function insertDB($nama,$email,$job){
