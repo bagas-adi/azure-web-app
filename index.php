@@ -2,11 +2,11 @@
 <?php   
   include 'koneksi.php';
   $conn = connectDB()
-  if($conn){
+  if($conn === false){
+    echo "false";
+  } else {
     echo "true";
     showData($conn);
-  } else {
-    echo "false";
   }
 ?>
 <!DOCTYPE html>
