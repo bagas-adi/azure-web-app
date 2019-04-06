@@ -1,6 +1,11 @@
 
 <?php  
   include("koneksi.php");
+  if(connectDB()){
+    echo "true";
+  } else {
+    echo "false";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
