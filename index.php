@@ -22,35 +22,35 @@
 
 
 <?php
-  $host = "tcp:bagasap90.database.windows.net,1433";
-  $dbname = "bagasap90-db";
-  $dbuser = "bagaswtf@bagasap90";
-  $dbpwd = "Bagasadi90--";
-  // $driver = "{SQL Server Native Client 10.0}";
-  $driver = "{ODBC Driver 13 for SQL Server}";
+  // $host = "tcp:bagasap90.database.windows.net,1433";
+  // $dbname = "bagasap90-db";
+  // $dbuser = "bagaswtf@bagasap90";
+  // $dbpwd = "Bagasadi90--";
+  // // $driver = "{SQL Server Native Client 10.0}";
+  // $driver = "{ODBC Driver 13 for SQL Server}";
 
-  // Build connection string
-  $dsn= "Driver={ODBC Driver 13 for SQL Server};Server=$host;Database=$dbname;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;";
-  // $dsn="Driver=$driver;Server=$host;Database=$dbname;Encrypt=true;TrustServerCertificate=true";
-  if (!($conn = @odbc_connect($dsn, $dbuser, $dbpwd))) {
-      die("Connection error: " . odbc_errormsg());
-  }
-  // Got a connection, run simple query
-  if ($qh = @odbc_exec($conn, "SELECT A, B FROM myTable")) {
-      // Dump query result
-      $rows = 0;
-      while ( $row = @odbc_fetch_object($qh) ) {
-            echo("$rows: $row->A $row->B\r\n");
-            $rows++;
-      }
-      @odbc_free_result($qh);
-  }
-  else {
-      // Error running query
-      echo("Query error: " . odbc_errormsg($conn));
-  }
-  // Free the connection
-  @odbc_close($conn);
+  // // Build connection string
+  // $dsn= "Driver={ODBC Driver 13 for SQL Server};Server=$host;Database=$dbname;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;";
+  // // $dsn="Driver=$driver;Server=$host;Database=$dbname;Encrypt=true;TrustServerCertificate=true";
+  // if (!($conn = @odbc_connect($dsn, $dbuser, $dbpwd))) {
+  //     die("Connection error: " . odbc_errormsg());
+  // }
+  // // Got a connection, run simple query
+  // if ($qh = @odbc_exec($conn, "SELECT A, B FROM myTable")) {
+  //     // Dump query result
+  //     $rows = 0;
+  //     while ( $row = @odbc_fetch_object($qh) ) {
+  //           echo("$rows: $row->A $row->B\r\n");
+  //           $rows++;
+  //     }
+  //     @odbc_free_result($qh);
+  // }
+  // else {
+  //     // Error running query
+  //     echo("Query error: " . odbc_errormsg($conn));
+  // }
+  // // Free the connection
+  // @odbc_close($conn);
 ?>
 
             <?php 
@@ -63,16 +63,16 @@
             //     print("Error connecting to SQL Server.");
             //     die(print_r($e));
             // };
-            $host = "bagasap90.database.windows.net";
-            $user = "bagaswtf";
-            $pass = "Bagasadi90--";
-            $db = "bagasap90-db";
-            try {
-                $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
-                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            } catch(Exception $e) {
-                echo "Failed: " . $e;
-            };
+            // $host = "bagasap90.database.windows.net";
+            // $user = "bagaswtf";
+            // $pass = "Bagasadi90--";
+            // $db = "bagasap90-db";
+            // try {
+            //     $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
+            //     $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            // } catch(Exception $e) {
+            //     echo "Failed: " . $e;
+            // };
             // SQL Server Extension Sample Code: Uid -> bagaswtf@bagasap90
                 
             $connectionInfo = array("Database" => "bagasap90-db","UID" => "bagaswtf@bagasap90", "PWD" => "Bagasadi90--", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
