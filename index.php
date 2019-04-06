@@ -1,29 +1,10 @@
 
 <?php   
   include 'koneksi.php';
-function insertDB($nama,$email,$job){
-  $tsql= "INSERT INTO [dbo].[Register] (Nama,Email,Job) VALUES ($nama,$email, $job)";
-    $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
-    if( $getResults === false ) {
-       die( print_r( sqlsrv_errors(), true));
-    };
-    sqlsrv_free_stmt($getResults);
-};
-function showData(){
-  $tsql= "SELECT * FROM [dbo].[Register]";
-    $getResults= sqlsrv_query($conn, $tsql) or die("Error ".sqlsrv_errors());
-    if( $getResults === false ) {
-       die( print_r( sqlsrv_errors(), true));
-    } else {
-      // echo ("Reading data from table" . PHP_EOL);
-      while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-         echo ($row['ID'] . " " . $row['Nama'] . PHP_EOL);
-      };
-    };
-    sqlsrv_free_stmt($getResults);
-  }; 
+ 
   if(connectDB()){
     echo "true";
+    showData();
   } else {
     echo "false";
   }
